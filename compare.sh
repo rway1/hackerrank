@@ -1,5 +1,17 @@
 #!/bin/bash
 
+#usage: compare.sh <nameofchallenge> [numberoftests]
+#   assumes file formats as follows:
+#
+#     executable: <nameofchallenge>.py
+#     
+#     inputfile:  <nameofchallenge>.in || <nameofchallenge>.in1 
+#     <nameofchallenge>.in2... <nameofchallenge>.in[numberoftests]
+#
+#     outputfile: <nameofchallenge>.out || <nameofchallenge>.out1
+#     <nameofchallenge>.out2... <nameofchallenge>.out[numberoftests]
+
+
 echo program file
 echo
 echo $1.py
