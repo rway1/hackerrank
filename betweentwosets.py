@@ -27,22 +27,12 @@ def Lcm(x):
   return l
 
 def findFactors(x):
-  y = []
-  for i in range(1,x+1):
-    if x%i == 0:
-      y.append(i)
-  return y
+  return [ i for i in range(1,x+1) if x%i == 0]
 
 def getTotalX(a, b):
   g = Gcd(b)
   l = Lcm(a)
-  z = findFactors(g)
-  total = 0
-  for i in z:
-    if i % l == 0:
-      total += 1
-
-  return total
+  return sum( 1 if i % l == 0 else 0 for i in findFactors(g))
 
 if __name__ == "__main__":
     n, m = input().strip().split(' ')
