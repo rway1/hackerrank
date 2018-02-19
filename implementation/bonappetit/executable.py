@@ -1,9 +1,13 @@
-
-if __name__ == "__main__":
-    main()
+import sys
 
 def ReturnAString():
     return "String"
 
-def RunCodeOnFile():
-    print("hello world!")
+def main(argv):
+    Print(argv)
+
+def Print(args):
+    print(args)
+
+if __name__ == "__main__":
+    main(sys.argv)

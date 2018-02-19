@@ -16,9 +16,10 @@ input_file_ext = ".in"
 def main():
     module = GetModule()
     test_dictionary = GetTestDictionary()
-    print(test_dictionary)
+    print("Value from gt: " + value)
 
-
+def Print(args):
+    return args
 
 def GetTestDictionary():
     cwd = os.getcwd()
@@ -36,10 +37,11 @@ def GetTestDictionary():
     test_dictionary = dict.fromkeys(test_in_files)
     for input_file in test_in_files:
         output_file = input_file.replace(input_file_ext, output_file_ext)
-        if not os.path.exists(test_directory + "/" + output_file):
-            print("No matching output file: " + output_file + " for: " + input_file)
-        else:
+        if output_file in all_test_files:
             test_dictionary[input_file] = output_file
+        else:
+            print("No matching output file: " + output_file + " for: " + input_file)
+            
     return test_dictionary
 
 
@@ -49,7 +51,9 @@ def GetModule():
     relative_path = cwd.replace(common_prefix, "")
     import_string = relative_path.replace("/", ".") + "." + file_to_be_tested
     try:
-        return importlib.import_module(import_string)
+        module = importlib.import_module(import_string)
+        module.Print = Print
+        return module    
     except:
         print("No Module Found: " + import_string)
         sys.exit()
