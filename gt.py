@@ -23,6 +23,7 @@ command = ["python3", "", "<", "", ">", ""]
 def main():
     executable = GetExecutable()
     test_dictionary = GetTestDictionary()
+    CreateResultsDirectory()
     i = 1
     for input_file, output_file in test_dictionary.items():
         result_file = input_file.replace(input_file_ext, result_file_ext).replace(test_directory_name, result_directory_name)
@@ -35,6 +36,10 @@ def main():
         else:
             print("test " + str(i) + " failed")
         i = i + 1
+
+def CreateResultsDirectory():
+    if not os.path.exists(cwd + "/" + result_directory_name):
+        os.makedirs(cwd + "/" + result_directory_name)
 
 def GetTestDictionary():
     if not os.path.exists(test_directory):
