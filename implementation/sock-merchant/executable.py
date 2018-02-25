@@ -7,12 +7,7 @@ def sockMerchant(n, ar):
     for item in ar:
         counter_list[item] = counter_list[item] + 1
     
-    pair_count = 0
-
-    for item in counter_list:
-        pair_count = pair_count + int(item/2)
-    
-    return pair_count
+    return sum([int(s/2) for s in counter_list])
 
 n = int(input().strip())
 ar = list(map(int, input().strip().split(' ')))
