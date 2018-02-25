@@ -3,7 +3,7 @@
 import sys
 
 def sockMerchant(n, ar):
-    # Complete this function
+    return n
 
 n = int(input().strip())
 ar = list(map(int, input().strip().split(' ')))
